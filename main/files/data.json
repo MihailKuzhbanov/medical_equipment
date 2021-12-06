@@ -1,0 +1,31 @@
+{
+  "id": "1323124234",
+  "description": {
+    "id": "323423441",
+    "name": "jgkdlfgjdfk",
+    "brand": "CANON",
+    "model": "HUENON",
+    "manufacturer": {
+      "id": "3454677",
+      "name": "123321",
+      "country": "123123"
+    },
+    "category": {
+      "id": "12",
+      "code": "4343",
+      "name": "OPA OPA"
+    }
+  },
+  "serial": "123456789",
+  "inventory": "987654321",
+  "date": "12-02-2000",
+  "storage": {
+    "building": "1",
+    "room": "33"
+  },
+  "condition": {
+    "id": "0",
+    "works": "on",
+    "location": "1"
+  }
+}

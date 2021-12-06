@@ -1,0 +1,31 @@
+{
+  "id" : "",
+  "description" : {
+    "id" : "",
+    "name" : "",
+    "brand" : "",
+    "model" : "",
+    "manufacturer" : {
+      "id" : "",
+      "name" : "",
+      "country" : ""
+    },
+    "category" : {
+      "id" : "",
+      "code" : "",
+      "name" : ""
+    }
+  },
+  "serial_number" : "",
+  "inventory_number" : "",
+  "manufacture_date" : "",
+  "storage_place" : {
+    "building" : "",
+    "room" : ""
+  },
+  "condition" : {
+    "id" : "",
+    "works" : "",
+    "location" : ""
+  }
+}
