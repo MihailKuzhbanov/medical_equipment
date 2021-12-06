@@ -1,8 +1,9 @@
 import json
+from os import listdir, path
 
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest
-from .forms import CarForm
+from .forms import EquipmentForm
 
 
 def index(request):
@@ -14,24 +15,35 @@ def about(request):
 
 
 def equipment(request):
-    file = 'main/files/equipment.json'
-    with open(file) as outfile:
+    file_path = 'main/files'
+    files = listdir(file_path)
+    return render(request, 'main/equipment.html', {'files' : files})
+
+
+def saved(request):
+    data_file = 'main/files/equipment.json'
+    with open(data_file) as outfile:
+        data = outfile.readlines()
+    return HttpResponse(data, content_type="application/json")
+
+
+def reports(request):
+    path = request.GET.get('filename')
+    filepath = 'main/files/' + path
+    with open(filepath) as outfile:
         data = outfile.readlines()
     return HttpResponse(data, content_type="application/json")
 
 
 def add_equipment(request):
-    # if request.method == 'POST':  # data sent by user
-    #     form = CarForm(request.POST)
-    #     print('post now')
-    #     if form.is_valid():
-    #         form.save()  # this will save Car info to database
-    #         return HttpResponse('Car added to database')
-    # else:  # display empty form
-
     if request.method == 'GET':
-        return render(request, 'main/add_equipment.html', {'car_form': CarForm()})
+        return render(request, 'main/add_equipment.html', {'equipment_form': EquipmentForm()})
     else:
+        counter = 0
+        filename = "main/files/equipment{}.json"
+        while path.isfile(filename.format(counter)):
+            counter += 1
+        filename = filename.format(counter)
         data = {"id": request.POST.get('id'),
                 "description": {
                     "id": request.POST.get('description_id'),
@@ -62,8 +74,9 @@ def add_equipment(request):
                     "location": request.POST.get('condition_location')
                 }
                 }
-        with open('main/files/data.json', 'w') as f:
+        with open(filename, 'w') as f:
             json.dump(data, f)
+
         return HttpResponse("Оборудование успешно добавлено")
 
 

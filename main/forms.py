@@ -1,7 +1,7 @@
 from django.forms import ModelForm
-from .models import Car
+from .models import Equipment
 
-class CarForm(ModelForm):
+class EquipmentForm(ModelForm):
     class Meta:
-        model = Car
+        model = Equipment
         exclude = ()

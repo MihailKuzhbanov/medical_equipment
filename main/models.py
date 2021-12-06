@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Car(models.Model):
+class Equipment(models.Model):
     id = models.BigIntegerField(primary_key=True)
     description_id = models.BigIntegerField()
     description_name = models.CharField(max_length=100)
