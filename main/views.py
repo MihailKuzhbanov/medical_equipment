@@ -14,7 +14,7 @@ def about(request):
 
 
 def equipment(request):
-    file = 'medical_equipment/main/files/equipment.json'
+    file = 'main/files/equipment.json'
     with open(file) as outfile:
         data = outfile.readlines()
     return HttpResponse(data, content_type="application/json")
@@ -62,8 +62,7 @@ def add_equipment(request):
                     "location": request.POST.get('condition_location')
                 }
                 }
-        print(json.dumps(data))
-        with open('medical_equipment/main/files/data.json', 'w') as f:
+        with open('main/files/data.json', 'w') as f:
             json.dump(data, f)
         return HttpResponse("Оборудование успешно добавлено")
 
